@@ -1,0 +1,82 @@
+html(lang="mul", id="html")
+	// i18n
+	+h.i18n('Search', '搜索文章', 'zh_cn')
+	+h.i18n('Recent', '最新文章', 'zh_cn')
+
+	if not site
+		+response.raise_404()
+
+	head
+
+		link(rel='dns-prefetch', href='//cdn-storage-for-boris.zhulux.net')
+		link(rel='dns-prefetch', href='//www.googletagmanager.com')
+		meta(http-equiv='PICS-Label', content='(PICS-1.1 "http://vancouver-webpages.com/VWP1.0/" l gen true comment "VWP1.0" by "blog.boris.tech" on "2017.09.06T11:04-0700" for "blog.boris.tech" r (Gam -1 V 2 Env -1 SF -1 Com 1 Can 0 Edu -1 S 1 P 1 Tol 1 MC -1 ))')
+		meta(http-equiv='Cache-Control', content='no-siteapp')
+		meta(name='browsermode', content='application')
+		script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-106433636-1')
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments)};
+			gtag('js', new Date());
+			gtag('config', 'UA-106433636-1');
+		+h.headers	
+
+		block title
+			title= site.title
+		+h.load('https://cdn-storage-for-boris.zhulux.net/website-assets/han.min.css')
+		+h.load('markdown')
+		+h.load('/template/style.scss')
+
+
+	body
+
+		#header.auto_header: .site
+			a(href='/')
+				img.avatar(src=site.avatar)
+				.title= site.title
+
+		.main
+			block content
+
+		.sub_main
+			block content2
+
+		.sidebar: .sidebar_body
+			.widget: #nav
+				+h.a(_('卷首'), 'https://boris.tech')
+				+h.a(_('博客'), '/')
+				+h.a(_('歸檔'), '/archive')
+				for p in get_data(status='page', type='post', limit=5, with_page=False, sort='position')
+					+h.a(_(p.title), '/'+p.url)
+			.widget
+				.widget_title= _('Recent')
+				ul.recent_posts: for post in posts.get_recent(8)
+					li: h3: a(href=post.url)
+						span.date= post.date.format("%d")
+							span.date_month= post.date.format("/%b")
+						post.title
+			.widget
+				.widget_title= _('Search')
+				form#search_block
+					input#search_value.text(placeholder="Search",type="text",value=request.args.s, onkeyup="if (event.keyCode == 13) search();")
+
+		#footer
+			+footer()
+				span © 2017
+				a(href='/', real="nofollow")= site.title
+				div.line(lang="zh-cmn-Hant")= 'An Entropy Slayer\'s Thoughts on Design, Code and the Poetic Life.<br> 同熵增做鬥爭，思考設計、編碼與詩意人生。'
+
+
+		+h.auto_sidebar('left')
+		+h.auto_header()
+		+h.back_to_top()
+
+		script(type='text/javascript', src='https://cdn-storage-for-boris.zhulux.net/website-assets/han.min.js', defer='')
+		script
+			function search() {
+				if (document.getElementById('search_value').value) {
+				  location.href = location.protocol + '//' + location.host + '?s=' + document.getElementById('search_value').value;
+				}
+				return false;
+			 }
+			if (window!=top){top.location.href = window.location.href;}

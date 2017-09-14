@@ -1,0 +1,18 @@
+extends base
+block title
+	title= request.args.s or site.title
+
+block content
+	+h.i18n('search_label', 'post contains <b>%s</b>  found below')
+	+h.i18n('search_label', '搜索包含 <b>%s</b>  的结果', 'zh_cn')
+
+	if request.args.s
+		h1.label_title= _('search_label') % request.args.s
+
+	for post in posts: article.post.han-init-context(lang=post.metadata.lang if post.metadata.lang)
+		.post_meta
+			time.post_date(datetime=post.date('%B %d, %Y'), pubdate="pubdate")= post.date('%B %d, %Y')
+			h2.post_title
+				a(href=post.url)= post.title
+		.post_content.markdown= post.content.opening or post.content.limit(200)
+	+h.paginator()

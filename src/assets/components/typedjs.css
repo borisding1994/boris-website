@@ -1,0 +1,29 @@
+.typed-cursor {
+  margin-left: .5rem;
+  color: var(--color-red);
+  display: none;
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  animation-name: typedjsBlink;
+  animation-duration: 0.7s;
+  animation-timing-function: initial;
+  animation-delay: initial;
+  animation-iteration-count: infinite;
+  animation-direction: initial;
+  animation-fill-mode: initial;
+  animation-play-state: initial;
+
+  @media (--tablet-screen-up) {
+    display: inline;
+  }
+}
+
+@keyframes typedjsBlink{
+  50% { opacity: 0.0; }
+}
+
+@-webkit-keyframes typedjsBlink{
+  0% { opacity: 1; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1; }
+}

@@ -1,0 +1,44 @@
+html, body{
+  height:100%;
+}
+
+#html {
+  /*
+  「漢字標準格式」不同於多數CSS框架，為正確處理樣式的覆蓋，請留意樣式的繼承規則，
+  按需求加入相應的語言屬性、父輩（或其他）元素選擇器等，以提高樣式權重.
+  */
+  background: var(--body-bg);
+  font-size: var(--base-font-size);
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-width: 300px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-font-feature-settings: "liga" on;
+  font-family: var(--base-font-family);
+}
+
+body{
+  color: var(--body-color);
+  font-size: 1rem;
+  letter-spacing: .01em;
+}
+
+code, pre{
+  font-family: var(--code-font-family);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  @nest &:hover{
+      color: #37414B;
+   }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}

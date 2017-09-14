@@ -1,0 +1,14 @@
+@import "var.css";
+@import "global.css";
+
+/* components */
+@import "components/helper.css";
+@import "components/typedjs.css";
+@import "components/button.css";
+
+/* page */
+@import "pages/landing.css";
+/*
+import "pages/blog_layout.css";
+import "pages/blog_list.css";
+*/

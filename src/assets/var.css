@@ -1,0 +1,26 @@
+:root {
+  --color-white: #fff;
+  --color-red: #ff5a5f;
+  --color-green: #77d042;
+  --color-blue: #00a1ff;
+  --color-yellow: #ffd500;
+  --color-teal: #57BDAA;
+  --color-gray-light: #adb5bd;
+  --color-gray: #868e96;
+  --color-gray-dark: #343a40;
+
+  --body-color: rgba(0,0,0,.8);
+  --body-bg: #fff;
+  --base-font-size: 16px;
+  --base-font-family: Avenir Next, Avenir, Roboto, Segoe UI, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+  Source Han Sans, Microsoft YaHei, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --code-font-family: Monaco, Consolas, Menlo, "Courier New", Courier, monospace;
+}
+
+@custom-media --mobile-screen (width <= 768px);
+@custom-media --tablet-screen (width >= 769px) and (width <= 1007px);
+@custom-media --desktop-screen (width >= 1008px) and (width <= 1199px);
+@custom-media --hd-screen (width >= 1200px);
+
+@custom-media --tablet-screen-up (width >= 769px);
+@custom-media --desktop-screen-up (width >= 1008px);

@@ -1,0 +1,36 @@
+boris.tech:8001 {
+  root /var/www/html/dist
+  gzip
+  index landing.html
+  log stdout
+
+  header / Strict-Transport-Security "max-age=31536000;"
+
+
+    redir 301 {
+      if {>X-Forwarded-Proto} is http
+      /  https://{host}{uri}
+    }
+}
+
+www.boris.tech:8001 {
+           redir https://boris.tech{uri}
+}
+
+blog.boris.tech:8001 {
+    gzip
+    log stdout
+    cache
+    header / Strict-Transport-Security "max-age=31536000;"
+    proxy / blog.boris.tech.park.bitcron.com:80 {
+    header_upstream Host blog.boris.tech
+    header_upstream X-Real-IP {remote}
+    header_upstream X-Forwarded-For {remote}
+    header_upstream X-Forwarded-Proto {scheme}
+    header_downstream X-Robots-Tag noindex
+  }
+  redir 301 {
+        if {>X-Forwarded-Proto} is http
+        /  https://{host}{uri}
+  }
+}

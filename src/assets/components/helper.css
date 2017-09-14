@@ -1,0 +1,56 @@
+.u-srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.u-container {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+
+  @media (--hd-screen) {
+    max-width: 75rem;
+  }
+  @media (--desktop-screen) {
+    max-width: 60rem;
+  }
+  @media (--tablet-screen) {
+    max-width: 45rem;
+  }
+  @media (--mobile-screen) {
+    padding: 0;
+  }
+}
+
+.u-hoverTransform {
+  display: inline-block;
+  padding: 0 .7rem;
+  overflow: hidden;
+  line-height: 2;
+  span {
+    display: inline-block;
+    position: relative;
+    transition: transform 500ms;
+    &:after {
+      content: attr(data-hover);
+      position: absolute;
+      top: -2rem;
+      left: 0;
+      transform: translate3d(0, 0, 0);
+      color: inherit;
+    }
+  }
+  &:hover span,
+  &:focus span {
+    transform: translateY(2rem);
+  }
+}

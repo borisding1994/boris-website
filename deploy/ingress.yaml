@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: boris-gcp
+
+spec:
+  tls:
+  - hosts:
+    - boris.tech
+    secretName: boristech-tls
+  backend:
+    serviceName: website
+    servicePort: 8001
+  #rules:
+  #- host: boris.tech

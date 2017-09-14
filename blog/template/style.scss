@@ -1,0 +1,506 @@
+/**
+ * @package Navy
+ * @author cho
+ * @version 1.0
+ * @link http://chopstack.com
+
+/* ==========================================================================
+   2. General - Setting up some base styles
+   ========================================================================== */
+
+$base-font-size: 16px;
+$primary-color: #ff5a5f;
+
+
+html{
+	font-size: $base-font-size;
+}
+body {
+    background-color:#FFF;
+    color:#444;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	padding: 0;
+	margin: 0;
+	word-break: break-all;
+
+	img{
+		max-width: 100%;
+	}
+}
+a{
+    color:#6E7173;
+    text-decoration:none;
+}
+a,button.submit,#c_submit,#logo {
+    -webkit-transition: all .1s ease-in;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+a:hover, a:active {
+    color:#6E7173;
+}
+
+form{
+	textarea, input{
+		font-size: 1rem;
+	}
+
+}
+
+
+
+
+/* ==========================================================================
+   basic layout
+   ========================================================================== */
+
+
+
+#header {
+    z-index: 99;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    background-color: #fff;
+
+    .site{
+        padding: 1.14rem 0;
+        .title {
+            color: #000;
+            font-size: 1.14rem;
+			line-height: 2;
+            text-transform: capitalize;
+            display: inline-block;
+            vertical-align: middle;
+            span {
+                color: #666;
+            }
+        }
+		a:hover .title{
+            color: #6E7173;
+        }
+        .avatar{
+            width: 2rem;
+            height: 2rem;
+            border-radius: 100%;
+            vertical-align: middle;
+            margin-right: .35rem;
+        }
+    }
+}
+
+
+
+.main{
+    padding-top: 9rem;
+
+	.label_title {
+		font-size: 1.3rem;
+		text-align: center;
+		font-weight: normal;
+		padding-bottom: 1.42rem;
+		b{
+			font-weight: normal;
+			background-color: #f7f7f7;
+			padding: .2em .2em;
+		}
+	}
+}
+
+
+#footer {
+	font-size: .85rem;
+	margin-top: 3em;
+    line-height:1.5;
+    color:#999;
+	a{
+		color: #888;
+		&:hover{
+			color: #555;
+		}
+
+	}
+    span{
+        font-size: .9em;
+        color: #aaa;
+    }
+	span.line{
+		display: block;
+	}
+}
+
+
+.main,.sub_main, .footer_wrapper, .doc_comments_wrapper{
+	margin: 0 auto;
+	position: relative;
+}
+
+@media (min-width: 1200px) {
+
+	.main,.sub_main, .footer_wrapper, .doc_comments_wrapper {
+		max-width: 75rem
+	}
+}
+
+@media (min-width: 1008px) and (max-width: 1199px) {
+
+	.main,.sub_main, .footer_wrapper, .doc_comments_wrapper {
+		max-width: 60rem
+	}
+}
+
+@media (min-width: 769px) and (max-width: 1007px) {
+
+	.main,.sub_main, .footer_wrapper, .doc_comments_wrapper {
+		max-width: 45rem;
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.main,.sub_main, .footer_wrapper, .doc_comments_wrapper {
+		padding: 0 1.5rem;
+	}
+}
+
+
+/* ========================================================================== */
+/*   side-bar */
+
+
+.sidebar{
+	position: fixed;
+	left: -23.5rem;
+
+}
+
+.sidebar_body{
+	padding: 4.28rem 0;
+
+	.widget{
+		margin-bottom: 2rem;
+		.widget_title{
+			font-size: 1rem;
+			margin: 15px 33px 0;
+			padding-bottom: 10px;
+			font-weight: normal;
+		}
+	}
+
+
+	#nav {
+		padding:0 20px 0 33px;
+		margin: 20px 0 40px;
+		a {
+			text-decoration: none;
+			padding: 3px 0px;
+			margin: 1px .4em 1px 0;
+			color: #888;
+			position: relative;
+			z-index: 4;
+			font-size: 1.7em;
+			line-height: 1.5;
+			display: inline-block;
+			border-bottom: 1px solid transparent;
+			&:hover{
+				border-bottom-color: #aaa;
+			}
+			&.current{
+				border-bottom-color: #000;
+				color: #000;
+			}
+		}
+	}
+
+
+	.recent_posts {
+		list-style:none;
+		padding:0;
+		margin:0;
+
+		li {
+			margin:0;
+			line-height:1.5;
+
+			h3{
+				margin: 0;
+				font-size: 13px;
+			}
+
+			a{
+				display: block;
+				margin: 0;
+				line-height: 1.7;
+				padding: .4em 32px .4em 33px;
+				font-weight: normal;
+				color: #444;
+				span{
+					text-transform: uppercase;
+					color: #aaa;
+				}
+				&:hover{
+					color: #fff;
+					background-color: #000;
+					span{
+						color: #fff!important;
+					}
+				}
+			}
+			.date_month{
+				font-size: 14px;
+				margin-right: 10px;
+				display: inline-block;
+				width: 3em;
+			}
+		}
+	}
+
+
+	#search_block {
+		position:relative;
+		input {
+			width: 100%;
+			box-sizing: border-box;
+			outline: none;
+			padding:0 33px;
+			line-height: 3.5;
+			border:none;
+			background-color: #fff;
+			font-size: 13px;
+			-webkit-transition: all .1s ease-in;
+			-moz-transition: all .1s ease-in;
+			-o-transition: all .1s ease-in;
+			transition: all .1s ease-in;
+		}
+		button {
+			position:absolute;
+			top:0;
+			right:25px;
+			border:none;
+			padding:6px 15px;
+			color:#444;
+			font-size: 13px;
+			line-height: 1.9;
+			background-color: #fff;
+			width: 60px;
+			height: 34px;
+		}
+	}
+}
+
+
+
+/*    post    */
+
+
+.post {
+	margin-bottom: 1.5rem;
+    padding:20px 0 23px;
+    .post_date {
+        text-align:left;
+        display: block;
+        text-indent: .1em;
+        color: #b2b9be;
+		text-transform: uppercase;
+		font-weight: 400;
+    }
+    .post_title {
+    	margin: 0;
+        padding:.6em 0 .2em;
+        color:#222;
+        text-align:left;
+        font-size: 28px;
+        line-height: 1.6;
+        font-weight: 500;
+        a {
+            color:#222;
+            &:hover{
+                color: #666;
+            }
+        }
+    }
+    .post_content {
+        font-size: 16px;
+        line-height: 1.81;
+        color:#444;
+    }
+}
+
+
+
+
+
+/* ==========================================================================
+   Archive page
+   ========================================================================== */
+
+
+.archives{
+	margin-top: -2em;
+	font-size: 1.1rem;
+	.archive_title{
+		margin-bottom: 1.2em;
+        padding: 0;
+		color: #222;
+		text-align: left;
+		font-size: 28px;
+		line-height: 1.6;
+		font-weight: 500;
+	}
+	.year {
+		width:60px;
+		padding: 10px 0;
+	}
+	.posts_in_year {
+		margin-left: 90px;
+		margin-top: -2.2em;
+		border-left: 1px solid #ddd;
+		li {
+			list-style: none;
+			line-height: 2;
+			a {
+				margin-left: 1.5em;
+			}
+		}
+	}
+}
+
+
+
+
+.paginator {
+	padding: 1.75rem 0 2.8rem;
+	font-size: 14px;
+	a {
+		display: inline-block;
+		line-height: 1.8;
+		padding: 5px 20px;
+		border: 1px solid #333;
+        color: #333;
+		float: left;
+		border-radius: 20px;
+		&.next {
+			float: right;
+		}
+		&:hover {
+			border-color: #999;
+		}
+	}
+}
+
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+.post .post_content {
+	font-size: 1.1rem;
+}
+@media print, screen and (max-width:860px) {
+	font-size: 1rem;
+    blockquote{
+        margin-left: 0;
+    }
+}
+@media print, screen and (max-width:680px) {
+    .page-navigator {
+        padding:15px 0 25px;
+    }
+    #footer {
+        padding-top:10px;
+    }
+    .page-navigator a {
+        padding:3px 12px;
+    }
+    .main {
+        padding-top: 100px;
+    }
+}
+@media print, screen and (max-width:500px) {
+    .post_page {
+        font-size: 14px;
+    }
+    .post .post_title {
+        font-size:22px;
+    }
+    .posts_in_year {
+        margin-left: 70px;
+        padding-left: 20px;
+    }
+
+}
+
+
+
+
+/*
+==========================================================================
+   Markdown
+==========================================================================
+*/
+
+.markdown {
+	color: #555;
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: normal;
+		margin: 2.5em 0 1.3em 0;
+		color: #000;
+	}
+
+
+	pre{
+		border: 1px solid #e6e6e6;
+		border-left: none;
+		border-right: none;
+		margin-top: 1.2em;
+		margin-bottom: 2.2em;
+		padding: 15px 20px;
+		display: block;
+		overflow: auto;
+		background: #fdfdfd;
+	}
+
+
+	a{
+		color: $primary-color;
+		font-weight: normal;
+	}
+
+
+	blockquote,.stressed {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		color: #555;
+		border-left: none;
+		display: block;
+		padding-left: 0.7rem;
+		margin-left: 1rem;
+		border-left: 0.2em solid #e6e6e6;
+	}
+
+	strong,b,em{
+		padding: 1px 2px;
+		background-color: #fcfcf0;
+		font-weight: normal;
+	}
+
+	code, tt{
+		border: none;
+		background: #F8F8F8;
+		display: inline-block;
+		padding: 3px 5px;
+		font-size: 13px;
+		font-family: inherit !important;
+	}
+}
+
+
+.doc_comments{
+	background-color: #fafafa;
+}

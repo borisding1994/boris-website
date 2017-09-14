@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+### macOS template
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+### Secruity
+.sync/
+configs/
+_data/
+
+### log
+sync_changes.log
