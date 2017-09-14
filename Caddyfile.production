@@ -1,5 +1,6 @@
 boris.tech:8001 {
   root /var/www/html/dist
+  tls off
   gzip
   index landing.html
   log stdout
@@ -14,10 +15,12 @@ boris.tech:8001 {
 }
 
 www.boris.tech:8001 {
+           tls off
            redir https://boris.tech{uri}
 }
 
 blog.boris.tech:8001 {
+    tls off
     gzip
     log stdout
     cache
