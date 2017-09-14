@@ -31,10 +31,6 @@ blog.boris.tech:8001 {
     header_upstream X-Forwarded-For {remote}
     header_upstream X-Forwarded-Proto {scheme}
   }
-  redir 301 {
-        if {>X-Forwarded-Proto} is http
-        /  https://{host}{uri}
-  }
 }
 
 0.0.0.0:8001 {
