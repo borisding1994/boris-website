@@ -1,38 +1,48 @@
 boris.tech:8001 {
   root /var/www/html/dist
   tls off
-  gzip
-  index landing.html
   log stdout
+  errors stdout
 
+  basicauth /cgi-bin boris {$DAV_PASSWD}
+  webdav /cgi-bin/webdav/caches {
+    scope /tmp/caddy
+  }
+
+  index landing.html
   header / Strict-Transport-Security "max-age=31536000;"
-
-
-    redir 301 {
-      if {>X-Forwarded-Proto} is http
-      /  https://{host}{uri}
-    }
+  redir 301 {
+    if {>X-Forwarded-Proto} is http
+    /  https://{host}{uri}
+  }
 }
 
 www.boris.tech:8001 {
-           tls off
-           redir https://boris.tech{uri}
+  tls off
+  redir https://boris.tech{uri}
 }
 
 blog.boris.tech:8001 {
-    tls off
-    gzip
-    log stdout
-    cache
-    header / Strict-Transport-Security "max-age=31536000;"
-    proxy / blog.boris.tech.park.bitcron.com:80 {
+  tls off
+  gzip
+  errors stdout
+  header / Strict-Transport-Security "max-age=31536000;"
+
+  proxy / blog.boris.tech.park.bitcron.com:80 {
     header_upstream Host blog.boris.tech
     header_upstream X-Real-IP {remote}
     header_upstream X-Forwarded-For {remote}
     header_upstream X-Forwarded-Proto {scheme}
   }
+
+  cache {
+    path /tmp/caddy/blog-cache
+    status_header X-Caddy-Cache-Status
+    default_max_age 168h
+    match_header X-Site-Id 257d7a96445dcb379072f8ce0df69d6822f86bee-blog.boris.tech
+  }
 }
 
 0.0.0.0:8001 {
-  status 200 /
+  expvar /
 }

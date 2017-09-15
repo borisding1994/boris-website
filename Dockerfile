@@ -5,7 +5,7 @@ RUN apk --no-cache add tini \
     && mkdir -p /var/www/html/dist
 
 #Install Caddy Server, and All Middleware
-RUN curl "https://caddyserver.com/download/linux/amd64?plugins=hook.service,http.cache,http.cors,http.expires,http.login,http.minify,http.ratelimit,http.realip,net,tls.dns.googlecloud&license=" \
+RUN curl "https://caddyserver.com/download/linux/amd64?plugins=http.cache,http.ratelimit,http.webdav&license=" \
     | tar --no-same-owner -C /usr/bin/ -xz caddy
 
 #Remove build devs

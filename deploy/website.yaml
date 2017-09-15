@@ -17,6 +17,12 @@ spec:
       containers:
         - image: gcr.io/soy-reporter-177713/boris-website:latest
           name: website
+          env:
+            - name: DAV_PASSWD
+              valueFrom:
+                secretKeyRef:
+                  name: blog-webdav
+                  key: password
           ports:
             - containerPort: 8001
               name: caddy
