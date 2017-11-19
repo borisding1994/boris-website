@@ -17,7 +17,9 @@ boris.tech:8001 {
   }
 }
 
-www.boris.tech:8001 {
+
+
+*.dingli.ac.cn, *.boris.tech, dingli.ac.cn, www.boris.tech:8001 {
   tls off
   redir https://boris.tech{uri}
 }
